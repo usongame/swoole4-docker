@@ -8,11 +8,13 @@ docker push ezkuangren/swoole4:latest
 
 #### 测试环境方便在命令行里操作：
 ```sh
-docker run -it -p 本地端口:容器端口 -v /你的本地目录:/var/www/project --privileged=true ezkuangren/swoole4
+docker run -it -p 本地端口:容器端口 -v /你的本地目录:/var/www/project --privileged=true ezkuangren/swoole4 /bin/bash
 ```
 此时会出现一个容器id。
 
 你成功的创建了一个镜像，下次再启动不需要加配置项了（端口，目录...），镜像好比是linux系统，容器是你要装的服务器，装好了之后下次启动不需要再配置各种项了。
+
+/bin/bash 是通过命令行进入到容器，就可以在容器里启动、停止、重启swoole项目了
 
 相关操作：
 
@@ -24,13 +26,15 @@ docker run -it -p 本地端口:容器端口 -v /你的本地目录:/var/www/proj
 
 `docker container update 配置 容器id` 修改
 
+`docker rename 原容器名  新容器名` 改名字，方便找，不然默认是随机生成的
+
 
 有时候，我们创建容器时忘了添加参数 --restart=always ，当 Docker 重启时，容器未能自动启动，
 现在要添加该参数怎么办呢，方法有两种：
 
 1、Docker 命令修改
 
-docker container update --restart=always 容器id
+docker container update --restart=always 容器名
 
 2、直接改配置文件
 
