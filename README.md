@@ -4,7 +4,7 @@
 # 启动
 > 建议用一个镜像启动两个容器：测试和部署
 ### 拉取镜像
-`docker push ezkuangren/swoole4:latest`
+`docker pull ezkuangren/swoole4`
 
 #### 测试环境方便在命令行里操作：
 ```sh
