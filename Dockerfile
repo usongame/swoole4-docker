@@ -1,11 +1,3 @@
-# swoole-docker
-仅为自己常用的swoole配套工具包
-
-# 启动
-
-
-
-# From
 FROM php:7.3-cli
 
 LABEL maintainer="job@fashop.cn"
