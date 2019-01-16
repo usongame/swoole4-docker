@@ -62,7 +62,14 @@ docker run -it -p 本地端口:容器端口 -v /你的本地目录:/var/www/proj
 
 意思是安装composer的依赖包，重新加载（比如命名空间的改变），清理缓存，开启fashop的项目
 
+# 如何安装easyswoole ? 
 
+假设是开发模式下，通过/bash/bin进入docker 之后执行（确定在/var/www/project目录，pwd可以看当前目录），执行以下命令行完毕之后，打开浏览器访问127.0.0.1:你映射的端口，看到easyswoole的环境界面就属于正常啦。
+```
+composer require easyswoole/easyswoole=3.x-dev
+php vendor/bin/easyswoole install
+php easyswoole start
+```
 # From
 FROM php:7.3-cli
 
