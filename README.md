@@ -1,6 +1,20 @@
 # swoole-docker
 仅为自己常用的swoole配套工具包
 
+### 编译
+```bash
+docker build -t ezkuangren/swoole4 .
+```
+
+### 推送到hub
+```bash
+docker push ezkuangren/swoole4:latest  
+```
+
+### 更新
+```bash
+
+```
 # 启动
 > 建议用一个镜像启动两个容器：测试和部署
 ### 拉取镜像

@@ -1,11 +1,11 @@
-FROM php:7.3-cli
+FROM php:7.2
 
 LABEL maintainer="job@fashop.cn"
 
 # Version
 ENV PHPREDIS_VERSION 4.0.1
 ENV HIREDIS_VERSION 0.13.3
-ENV SWOOLE_VERSION 4.2.12
+ENV SWOOLE_VERSION 4.4.0-alpha
 
 # Timezone
 RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
@@ -19,6 +19,7 @@ RUN apt-get update \
     wget \
     git \
     zip \
+    libcurl4-gnutls-dev \
     libz-dev \
     libssl-dev \
     libnghttp2-dev \
@@ -45,6 +46,7 @@ RUN docker-php-ext-install bcmath
 
 # Zip extension
 RUN docker-php-ext-install zip
+
 
 # Redis extension
 RUN wget http://pecl.php.net/get/redis-${PHPREDIS_VERSION}.tgz -O /tmp/redis.tar.tgz \
@@ -73,12 +75,14 @@ RUN wget https://github.com/swoole/swoole-src/archive/v${SWOOLE_VERSION}.tar.gz 
     && ( \
     cd swoole \
     && phpize \
-    && ./configure --enable-async-redis --enable-mysqlnd --enable-openssl --enable-http2 \
+    && ./configure --enable-mysqlnd --enable-openssl \
     && make -j$(nproc) \
     && make install \
     ) \
     && rm -r swoole \
     && docker-php-ext-enable swoole
+
+
 
 WORKDIR /var/www/project
 
