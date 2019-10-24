@@ -92,7 +92,7 @@ LABEL maintainer="job@fashop.cn"
 # Version
 ENV PHPREDIS_VERSION 4.0.1
 ENV HIREDIS_VERSION 0.13.3
-ENV SWOOLE_VERSION 4.2.12
+ENV SWOOLE_VERSION 4.4.8
 
 # Timezone
 RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
